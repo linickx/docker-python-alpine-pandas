@@ -3,6 +3,6 @@ services:
 
  py_pandas:
     image: linickx/python-alpine-pandas
-    entrypoint: python test.py
+    command: test.py
     volumes:
     - ./:/app/
