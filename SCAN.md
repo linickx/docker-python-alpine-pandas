@@ -5,10 +5,11 @@ This docker image and packages are not pinned to any version, as such the reposi
 To help give users and idea of what the latest dockerhub build/images looks like, this report is produced.
 
 The scanner uses [Grype](https://github.com/anchore/grype/) within a [Github Scan Action](https://github.com/anchore/scan-action) 
----
-05-20-2026 17:21:46
----
 
+---
+05-20-2026 17:33:30
+---
+````
 NAME           INSTALLED   FIXED IN  TYPE    VULNERABILITY   SEVERITY    EPSS           RISK   
 python         3.14.5                binary  CVE-2026-6100   Critical    0.2% (36th)    0.1    
 python3        3.12.13-r0            apk     CVE-2026-6100   Critical    0.2% (36th)    0.1    
@@ -40,4 +41,4 @@ python3        3.12.13-r0            apk     CVE-2026-2297   Medium      < 0.1% 
 python3        3.12.13-r0            apk     CVE-2026-4519   Low         < 0.1% (0th)   < 0.1  
 python3        3.12.13-r0            apk     CVE-2025-13462  Low         < 0.1% (2nd)   < 0.1  
 python3        3.12.13-r0            apk     CVE-2026-3479   Negligible  < 0.1% (3rd)   < 0.1  
-
+````
