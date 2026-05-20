@@ -1,0 +1,17 @@
+name: Docker Image Build and Scan with Grype
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v6
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile -t ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest
+      - name: Scan image
+        uses: anchore/scan-action@v7
+        with:
+          image: ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest
