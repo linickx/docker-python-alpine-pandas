@@ -21,12 +21,13 @@ jobs:
       - name: Write SCAN Report
         run: |
             cat .github/SCAN-Template.md > SCAN.md
+            echo >> SCAN.md
             echo "---" >> SCAN.md
             date +'%m-%d-%Y %T' >> SCAN.md
             echo "---" >> SCAN.md
-            echo "````" >> SCAN.md
+            echo '````' >> SCAN.md
             cat grype.txt >> SCAN.md
-            echo "````" >> SCAN.md
+            echo '````' >> SCAN.md
       - run: rm -f grype.txt
       - name: Upload SCAN report to git
         run: |
