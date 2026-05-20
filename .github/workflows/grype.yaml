@@ -15,3 +15,21 @@ jobs:
         uses: anchore/scan-action@v7
         with:
           image: ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest
+          fail-build: false
+          output-format: table
+          output-file: grype.txt
+      - run |
+            cat .github/SCAN-Template.md > SCAN.md
+            echo "---" >> SCAN.md
+            date +'%m-%d-%Y %T' >> SCAN.md
+            echo "---" >> SCAN.md
+            echo "````" >> SCAN.md
+            cat grype.txt >> SCAN.md
+            echo "````" >> SCAN.md
+      - run rm -f grype.txt
+      - run |
+            git config --global user.name "${{ github.actor }}"
+            git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+            git add SCAN.md
+            git commit -m "Vulnerability/Build Report $(date +'%m-%d-%Y %T')"
+            git push
