@@ -18,7 +18,8 @@ jobs:
           fail-build: false
           output-format: table
           output-file: grype.txt
-      - run |
+      - name: Write SCAN Report
+        run: |
             cat .github/SCAN-Template.md > SCAN.md
             echo "---" >> SCAN.md
             date +'%m-%d-%Y %T' >> SCAN.md
@@ -26,8 +27,9 @@ jobs:
             echo "````" >> SCAN.md
             cat grype.txt >> SCAN.md
             echo "````" >> SCAN.md
-      - run rm -f grype.txt
-      - run |
+      - run: rm -f grype.txt
+      - name: Upload SCAN report to git
+        run: |
             git config --global user.name "${{ github.actor }}"
             git config --global user.email "${{ github.actor }}@users.noreply.github.com"
             git add SCAN.md
