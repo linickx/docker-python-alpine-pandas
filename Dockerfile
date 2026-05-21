@@ -11,7 +11,5 @@ RUN pip install numpy
 RUN pip install pandas
 RUN apk del .build-deps
 
-COPY test.py /test.py
-
 WORKDIR /app
 ENTRYPOINT ["python"]

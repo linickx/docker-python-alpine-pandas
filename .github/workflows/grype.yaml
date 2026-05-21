@@ -12,7 +12,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile -t ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest
       - name: Test the Build/Image
-        run: docker run --rm -t ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest /test.py
+        run: docker run --rm -v ./test.py:/test.py -t ${{ vars.DOCKERHUB_USERNAME }}/python-alpine-pandas:latest /test.py
       - name: Create SBOM
         uses: anchore/sbom-action@v0
         with:
